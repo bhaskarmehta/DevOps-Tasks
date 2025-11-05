@@ -1,0 +1,69 @@
+Save the file name as - playbook.yaml
+---------------------------------------
+
+
+---
+- name: Install Apache2, MySQL, and Docker 
+  hosts: localhost
+  become: yes
+  connection: local
+  tasks:
+
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install Apache2
+      apt:
+        name: apache2
+        state: present
+
+    - name: Ensure Apache2 is running
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+
+    - name: Install MySQL server
+      apt:
+        name: mysql-server
+        state: present
+
+    - name: Ensure MySQL is running
+      service:
+        name: mysql
+        state: started
+        enabled: yes
+
+    - name: Install Docker using apt 
+      apt:
+        name: docker.io
+        state: present
+
+    - name: Ensure Docker service is started and enabled
+      service:
+        name: docker
+        state: started
+        enabled: yes
+    - name: Pull Docker image 
+      docker_image:
+        name: nginx
+        tag: latest
+        source: pull
+
+    - name: Run Docker container
+      docker_container:
+        name: nginx
+        image: nginx:latest
+        state: started
+        restart_policy: always
+        ports:
+          - "8080:80"
+
+
+**** TO run the  Playbook  *********
+----------------------------------------
+ansible-playbook <playbook yaml file>
+
+
+
