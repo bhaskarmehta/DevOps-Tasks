@@ -31,4 +31,18 @@ TO Run the Automation Script
 crontab -e 
 0 2 * * * <path of Script>
 
-  
+
+
+  Serverless Architecture Description
+  -----------------------------------
+
+###  User Flow
+1. **Users** access the application through the Internet.
+2. **AWS WAF (Web Application Firewall)** filters and blocks malicious requests (DDoS, SQL injection, etc.).
+3. **Amazon CloudFront** acts as a **Content Delivery Network (CDN)** to cache and deliver content globally with low latency.
+4. Requests are routed:
+   - `/` → to the **S3 Frontend** bucket hosting the static website.
+   - `/api` → to the **Amazon API Gateway** for backend processing.
+5. **Amazon Cognito** handles user authentication.
+6. **AWS Lambda** executes serverless business logic (processing, validation, metadata retrieval).
+7. **Amazon DynamoDB** stores and retrieves media metadata .
