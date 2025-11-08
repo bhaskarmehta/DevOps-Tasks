@@ -40,6 +40,7 @@ Adhoc Command - This is used to perform the task  which is not repetive or need 
  -m shell - Module Name
  -a argument
 
+Ansible - It is an Configuration Management tool for automating the repeatative tasks. It follows push based mechanism
 
 TO Run the Automation Script
 -----------------------------
