@@ -19,6 +19,20 @@ TO Setup Ansible In the Server
 ***Save the Ansible file name as yaml file - Example - playbook.yaml ****
 *** Run the Playbook as  - ansible-playbook playbook.yaml ***
 
+In Destination Server
+-------------------
+In /etc/ssh/sshd_config file change the parameter to allow the password authentication 
+
+and then run systemctl restart ssh
+
+In ansible server
+----------------
+Run  - ssh-keygen
+And copy the key from source to destination as
+
+ssh-copy-id username@<ip> , Ex - ssh-copy-id root@10.11.0.3
+
+
 
 
 TO Run the Automation Script
