@@ -32,7 +32,13 @@ And copy the key from source to destination as
 
 ssh-copy-id username@<ip> , Ex - ssh-copy-id root@10.11.0.3
 
+Adhoc Command - This is used to perform the task  which is not repetive or need to know less frequently.
+ ansible all -m shell -a "df -h" 
 
+ ansible - command
+ all- hosts
+ -m shell - Module Name
+ -a argument
 
 
 TO Run the Automation Script
